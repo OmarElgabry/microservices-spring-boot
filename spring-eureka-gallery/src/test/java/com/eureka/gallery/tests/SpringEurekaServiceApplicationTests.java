@@ -1,4 +1,4 @@
-package com.eureka.student.tests;
+package com.eureka.gallery.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
