@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-eureka-course
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: omarelgabry
+Implementation-Vendor-Id: com.eureka.course
+Build-Jdk: 1.8.0_161
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/spring-eureka-course
+Created-By: Maven Integration for Eclipse
+
