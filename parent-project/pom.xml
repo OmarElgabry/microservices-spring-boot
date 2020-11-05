@@ -16,6 +16,7 @@
         <module>../spring-eureka-zuul</module>
         <module>../spring-eureka-image</module>
         <module>../spring-eureka-gallery</module>
+		<module>../spring-eureka-map</module>
     </modules>
     <packaging>pom</packaging>
 
