@@ -43,9 +43,11 @@ public class HomeController {
 		gallery.setId(id);
 
 		// get list of available images 
-		// @SuppressWarnings("unchecked")    // we'll throw an exception from image service to simulate a failure
+		@SuppressWarnings("unchecked")    // we'll throw an exception from image service to simulate a failure
 		List<Object> images = restTemplate.getForObject("http://image-service/images/", List.class);
 		gallery.setImages(images);
+		
+		System.out.println(gallery.toString());
 	
 		return gallery;
 	}
