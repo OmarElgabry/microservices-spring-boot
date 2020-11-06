@@ -7,8 +7,15 @@ The series of articles can be found below:
 - [Microservices with Spring Boot — Authentication with JWT (Part 3)](https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8)
 - [Microservices with Spring Boot — Circuit Breaker & Log Tracing (Part 4)](https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-circuit-breaker-log-tracing-part-4-9cdf5e898988)
 
-I've written this script in my free time during my work. If you find it useful, please support the project by spreading the word.
 
-Contribute by creating new issues, sending pull requests on Github or you can send an email at: omar.elgabry.93@gmail.com
-
-Thanks.
+## How to run
+Note: open a terminal window for each directory (parent-project, spring-eureka-server/target, spring-eureka-zuul/target and spring-eureka-map/target).
+Note: Wait for each run to complete before the starting the next, server must be loaded before zuul can start and zuul must be loaded before any following microservices can be run.
+1. In directory 'parent-project'
+2. Run 'mvn install on cmd line', this will build the eureka-server, zuul and map-service
+3. In directory 'spring-eureka-server/target'
+4. Run 'java -jar spring-eureka-server-0.0.1-SNAPSHOT.jar'
+5. In directory 'spring-eureka-zuul/target'
+6. Run 'java -jar spring-eureka-zuul-0.0.1-SNAPSHOT.jar'
+7. In directory 'spring-eureka-map/target'
+8. Run 'java -jar spring-eureka-map-0.0.1-SNAPSHOT.jar'
