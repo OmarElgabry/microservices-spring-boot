@@ -10,6 +10,7 @@ The series of articles can be found below:
 
 ## How to run
 Note: open a terminal window for each directory (parent-project, spring-eureka-server/target, spring-eureka-zuul/target and spring-eureka-map/target).
+
 Note: Wait for each run to complete before the starting the next, server must be loaded before zuul can start and zuul must be loaded before any following microservices can be run.
 1. In directory 'parent-project'
 2. Run 'mvn install on cmd line', this will build the eureka-server, zuul and map-service
