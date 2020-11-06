@@ -41,9 +41,10 @@ public class HomeController {
 	}
 	
 	@PostMapping("/addmap")
-	public void addMap(int id, double latitude, double longitude, int range) {
+	public Map addMap(int id, double latitude, double longitude, int range) {
 		Map m = new Map(id,latitude,longitude,range);
-		maps.add(m);
+//		maps.add(m);
+		return m;
 	}
 	
 	
