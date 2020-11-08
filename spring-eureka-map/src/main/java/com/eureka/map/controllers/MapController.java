@@ -32,14 +32,14 @@ public class MapController {
 	MapController(MapRepository repository){
 		this.repository = repository;		
 	}
-//		
-//	@RequestMapping("/")
-//	public String home() {
-//		// This is useful for debugging
-//		// When having multiple instance of gallery service running at different ports.
-//		// We load balance among them, and display which instance received the request.
-//		return "Hello from Map Service running at port: " + env.getProperty("local.server.port");
-//	}
+		
+	@RequestMapping("/port")
+	public String home() {
+		// This is useful for debugging
+		// When having multiple instance of gallery service running at different ports.
+		// We load balance among them, and display which instance received the request.
+		return "Hello from Map Service running at port: " + env.getProperty("local.server.port");
+	}
 	
 	//Aggregate
 	@GetMapping("/")
@@ -57,6 +57,7 @@ public class MapController {
 	Map one(@PathVariable int id) {
 		return repository.findById(id)
 			      .orElseThrow(() -> new MapNotFoundException(id));
+
 	}
 	
 	@PutMapping("/{id}")
