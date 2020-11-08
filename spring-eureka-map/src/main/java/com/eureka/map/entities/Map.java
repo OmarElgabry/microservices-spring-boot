@@ -1,13 +1,19 @@
 package com.eureka.map.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Map {
-	private int id;
+	private @Id @GeneratedValue int id;
 	private double longitude;
 	private double latitude;
 	private int range;
 	
-	public Map(int id, double latitude, double longitude, int range) {
-		this.id = id;
+	public Map() {}
+	
+	public Map(double latitude, double longitude, int range) {
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.range = range;
