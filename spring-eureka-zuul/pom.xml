@@ -80,6 +80,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>zuul-gateway-service-1.0-RELEASE</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
