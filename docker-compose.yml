@@ -26,37 +26,37 @@ services:
       eureka-server:
         condition: service_healthy
 
-#  auth-service:
-#    container_name: auth-service
-#    image: auth-service
-#    build: ./spring-eureka-auth
-#    restart: on-failure
-#    environment:
-#      - SPR_PROFILE=docker
-#      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
-#    ports:
-#      - '9100:9100'
-#    healthcheck:
-#      test: [ "CMD", "nc", "-z", "localhost", "9100" ]
-#    depends_on:
-#      common-service:
-#        condition: service_healthy
-#
-#  zuul-gateway-service:
-#    container_name: zuul-gateway-service
-#    image: zuul-gateway-service
-#    build: ./spring-eureka-zuul
-#    restart: on-failure
-#    environment:
-#      - SPR_PROFILE=docker
-#      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
-#    ports:
-#      - '8762:8762'
-#    healthcheck:
-#      test: [ "CMD", "nc", "-z", "localhost", "8762" ]
-#    depends_on:
-#      common-service:
-#        condition: service_healthy
+  auth-service:
+    container_name: auth-service
+    image: auth-service
+    build: ./spring-eureka-auth
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '9100:9100'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9100" ]
+    depends_on:
+      common-service:
+        condition: service_healthy
+
+  zuul-gateway-service:
+    container_name: zuul-gateway-service
+    image: zuul-gateway-service
+    build: ./spring-eureka-zuul
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '8762:8762'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8762" ]
+    depends_on:
+      common-service:
+        condition: service_healthy
 
   gallery-service:
     container_name: gallery-service
