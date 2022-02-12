@@ -1,0 +1,88 @@
+version: '3'
+services:
+  eureka-server:
+    container_name: eureka-server
+    image: eureka-server
+    build: ./spring-eureka-server
+    restart: on-failure
+    ports:
+      - '8761:8761'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8761" ]
+
+  common-service:
+    container_name: common-service
+    image: common-service
+    build: ./spring-eureka-common
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '9200:9200'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9200" ]
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+  auth-service:
+    container_name: auth-service
+    image: auth-service
+    build: ./spring-eureka-auth
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '9100:9100'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9100" ]
+    depends_on:
+      common-service:
+        condition: service_healthy
+
+  zuul-gateway-service:
+    container_name: zuul-gateway-service
+    image: zuul-gateway-service
+    build: ./spring-eureka-zuul
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '8762:8762'
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8762" ]
+    depends_on:
+      common-service:
+        condition: service_healthy
+
+  gallery-service:
+    container_name: gallery-service
+    image: gallery-service
+    build: ./spring-eureka-gallery
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '8100:8100'
+    depends_on:
+      common-service:
+        condition: service_healthy
+
+  image-service:
+    container_name: image-service
+    image: image-service
+    build: ./spring-eureka-image
+    restart: on-failure
+    environment:
+      - SPR_PROFILE=docker
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka
+    ports:
+      - '8200:8200'
+    depends_on:
+      common-service:
+        condition: service_healthy
+
